@@ -51,8 +51,33 @@ function create(req, res) {
   }
 }
 
+const show = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id)
+    .populate('owner')
+    return res.status(200).json(post)
+  } catch (err) {
+    return res.status(500).json(err)
+  }
+}
+
+const update = async (req, res) => {
+  try {
+    const updateData = { is_resolved: true }
+    const updatedPost = await Post.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      { new: true }
+    )
+    return res.status(200).json(updatedPost)
+  } catch (err) {
+    return res.status(500).json(err)
+  }
+}
+
 export{
   index,
   create,
-
+  show,
+  update,
 }
