@@ -8,6 +8,7 @@ router.use(decodeUserFromToken)
 
 router.get('/', postsCtrl.index)
 router.post('/',  checkAuth, postsCtrl.create)
+router.get('/:id', checkAuth, postsCtrl.show)
 
 
 export {
