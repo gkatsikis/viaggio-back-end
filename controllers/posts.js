@@ -3,7 +3,7 @@ import { Post } from '../models/post.js'
 function index (req, res) {
   console.log('INDEX')
   Post.find({})
-  .populate('owner')
+  // .populate('')
   .then(posts => {
     res.json(posts)
   })
