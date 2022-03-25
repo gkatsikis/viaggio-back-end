@@ -6,11 +6,9 @@ const router = Router()
 
 router.use(decodeUserFromToken)
 
-router.get('/',  checkAuth, postsCtrl.index)
+router.get('/', postsCtrl.index)
 router.post('/',  checkAuth, postsCtrl.create)
-router.put('/:id', checkAuth, postCtrl.update)
-router.delete('/:id', checkAuth, postCtrl.delete)
-router.get('/:id', checkAuth, postCtrl.show)
+
 
 export {
   router
