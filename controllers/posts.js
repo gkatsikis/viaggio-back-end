@@ -81,8 +81,9 @@ const deletePost = async (req, res) => {
     const profile = await Profile.findById(req.user.profile)
     profile.posts.remove({_id: req.params.id })
     await profile.save()
-    return res.status(204).end()
+    return res.json(profile)
   } catch (err) {
+    console.log('THIS IS THE:', err)
     return res.status(500).json(err)
   }
 }
