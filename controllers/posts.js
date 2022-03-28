@@ -90,7 +90,7 @@ const deletePost = async (req, res) => {
 }
 
 
-//comments
+
 const createComment = async (req, res) => {
   try {
     req.body.commenter = req.user.profile
@@ -100,6 +100,7 @@ const createComment = async (req, res) => {
     const newComment = post.comments[post.comments.length - 1]
     return res.status(201).json(newComment)
   } catch (err) {
+    console.log('commentupload', err)
     res.status(500).json(err)
   }
 }
