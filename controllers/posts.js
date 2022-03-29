@@ -92,6 +92,7 @@ const deletePost = async (req, res) => {
 
 
 const createComment = async (req, res) => {
+  console.log(createComment)
   try {
     req.body.commenter = req.user.profile
     const post = await Post.findById(req.params.id)
