@@ -22,14 +22,14 @@ function create(req, res) {
   })
 }
 
-// function show(req, res) {
-//   BucketList.findById(req.params.id)
-//   .then(bucketlist => res.json(bucketlist))
-//   .catch(err =>{
-//     console.log(err)
-//     res.json(err)
-//   })
-// }
+function show(req, res) {
+  BucketList.findById(req.params.id)
+  .then(bucketlist => res.json(bucketlist))
+  .catch(err =>{
+    console.log(err)
+    res.json(err)
+  })
+}
 
 // function update(req, res) {
 //   BucketList.findByIdAndUpdate(req.params.id, req.body, {new: true})
@@ -52,7 +52,7 @@ function create(req, res) {
 export {
   index,
   create,
-  // show,
+  show,
   // update,
   // deleteBucketList as delete
   
