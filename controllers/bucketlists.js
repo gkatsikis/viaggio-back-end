@@ -31,14 +31,14 @@ function show(req, res) {
   })
 }
 
-// function update(req, res) {
-//   BucketList.findByIdAndUpdate(req.params.id, req.body, {new: true})
-//   .then(bucketlist => res.json(bucketlist))
-//   .catch(err => {
-//     console.log(err)
-//     res.json(err)
-//   })
-// }
+function update(req, res) {
+  BucketList.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then(bucketlist => res.json(bucketlist))
+  .catch(err => {
+    console.log(err)
+    res.json(err)
+  })
+}
 
 // function deleteBucketList(req, res) {
 //   BucketList.findByIdAndDelete(req.params.id)
@@ -53,7 +53,7 @@ export {
   index,
   create,
   show,
-  // update,
+  update,
   // deleteBucketList as delete
   
 }
