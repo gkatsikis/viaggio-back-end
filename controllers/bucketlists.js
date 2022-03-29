@@ -40,20 +40,19 @@ function update(req, res) {
   })
 }
 
-// function deleteBucketList(req, res) {
-//   BucketList.findByIdAndDelete(req.params.id)
-//   .then(bucketlist => res.json(bucketlist))
-//   .catch(err => {
-//     console.log(err)
-//     res.json(err)
-//   })
-// }
+function deleteBucketList(req, res) {
+  BucketList.findByIdAndDelete(req.params.id)
+  .then(bucketlist => res.json(bucketlist))
+  .catch(err => {
+    console.log(err)
+    res.json(err)
+  })
+}
 
 export {
   index,
   create,
   show,
   update,
-  // deleteBucketList as delete
-  
+  deleteBucketList as delete
 }
