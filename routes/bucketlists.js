@@ -5,11 +5,11 @@ import { checkAuth, decodeUserFromToken } from '../middleware/auth.js'
 const router = Router()
 
 /*---------- Public Routes ----------*/
-router.get('/', bucketlistsCtrl.index)
+// router.get('/', bucketlistsCtrl.index)
 router.post('/', bucketlistsCtrl.create)
-router.get('/:id', bucketlistsCtrl.show)
-router.put('/:id', bucketlistsCtrl.update)
-router.delete('/:id', bucketlistsCtrl.delete)
+// router.get('/:id', bucketlistsCtrl.show)
+// router.put('/:id', bucketlistsCtrl.update)
+// router.delete('/:id', bucketlistsCtrl.delete)
 
 
 /*---------- Protected Routes ----------*/
