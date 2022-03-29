@@ -13,6 +13,7 @@ import { Profile } from '../models/profile.js'
 // }
 
 function create(req, res) {
+  console.log('PRINT:', req.body)
   BucketList.create(req.body)
   .then(bucketlist => res.json(bucketlist))
   .catch(err => {
