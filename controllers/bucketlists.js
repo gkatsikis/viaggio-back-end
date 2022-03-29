@@ -1,16 +1,16 @@
 import { BucketList } from "../models/bucketlist.js";
 import { Profile } from '../models/profile.js'
 
-// function index (req, res) {
-//   BucketList.find({})
-//   .then(bucketlists => {
-//     res.json(bucketlists)
-//   })
-//   .catch(err => {
-//    console.log(err)
-//     res.json(err)
-//   })
-// }
+function index (req, res) {
+  BucketList.find({})
+  .then(bucketlists => {
+    res.json(bucketlists)
+  })
+  .catch(err => {
+    console.log(err)
+    res.json(err)
+  })
+}
 
 function create(req, res) {
   console.log('PRINT:', req.body)
@@ -50,7 +50,7 @@ function create(req, res) {
 // }
 
 export {
-  // index,
+  index,
   create,
   // show,
   // update,
