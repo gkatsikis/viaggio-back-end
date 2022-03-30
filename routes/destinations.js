@@ -1,9 +1,13 @@
 import { Router } from 'express'
-import * as destCtrl from '../controllers/destinations'
+import * as destinationsCtrl from '../controllers/destinations'
 import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 const router = Router()
 
 router.use(decodeUserFromToken)
 
-router.post('/', checkAuth, destCtrl.create)
+router.post('/', checkAuth, destinationsCtrl.create)
+
+export {
+  router,
+}
