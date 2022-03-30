@@ -2,7 +2,7 @@ import { ListItem } from "../models/listItem.js";
 import { Profile } from '../models/profile.js'
 
 function index (req, res) {
-  ListItem.find({})
+  ListItem.find({owner: req.user.profile})
   .then(listItems => {
     res.json(listItems)
   })
@@ -13,7 +13,7 @@ function index (req, res) {
 }
 
 function create(req, res) {
-  console.log('PRINT:', req.body)
+  req.body.owner = req.user.profile
   ListItem.create(req.body)
   .then(listItem => res.json(listItem))
   .catch(err => {
