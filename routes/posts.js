@@ -16,9 +16,9 @@ router.put('/:id', postsCtrl.update)
 router.delete('/:id', checkAuth, postsCtrl.delete)
 
 //comments
-router.post('/:id/comments', checkAuth, postsCtrl.createComment)
-router.delete('/:postId/comments/:commentId', checkAuth, postsCtrl.deleteComment)
-router.put('/:postId/comments/:commentId', checkAuth, postsCtrl.updateComment)
+router.post('/:id/comments', postsCtrl.createComment)
+router.delete('/:postId/comments/:commentId',  postsCtrl.deleteComment)
+router.put('/:postId/comments/:commentId',  postsCtrl.updateComment)
 
 
 export {
