@@ -1,10 +1,10 @@
-import { BucketList } from "../models/bucketlist.js";
+import { ListItem } from "../models/listItem.js";
 import { Profile } from '../models/profile.js'
 
 function index (req, res) {
-  BucketList.find({})
-  .then(bucketlists => {
-    res.json(bucketlists)
+  ListItem.find({})
+  .then(listItems => {
+    res.json(listItems)
   })
   .catch(err => {
     console.log(err)
@@ -14,8 +14,8 @@ function index (req, res) {
 
 function create(req, res) {
   console.log('PRINT:', req.body)
-  BucketList.create(req.body)
-  .then(bucketlist => res.json(bucketlist))
+  ListItem.create(req.body)
+  .then(listItem => res.json(listItem))
   .catch(err => {
     console.log(err)
     res.json(err)
@@ -23,8 +23,8 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  BucketList.findById(req.params.id)
-  .then(bucketlist => res.json(bucketlist))
+  ListItem.findById(req.params.id)
+  .then(listItem => res.json(listItem))
   .catch(err =>{
     console.log(err)
     res.json(err)
@@ -32,17 +32,17 @@ function show(req, res) {
 }
 
 function update(req, res) {
-  BucketList.findByIdAndUpdate(req.params.id, req.body, {new: true})
-  .then(bucketlist => res.json(bucketlist))
+  ListItem.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then(listItem => res.json(listItem))
   .catch(err => {
     console.log(err)
     res.json(err)
   })
 }
 
-function deleteBucketList(req, res) {
-  BucketList.findByIdAndDelete(req.params.id)
-  .then(bucketlist => res.json(bucketlist))
+function deleteListItem(req, res) {
+  ListItem.findByIdAndDelete(req.params.id)
+  .then(listItem => res.json(listItem))
   .catch(err => {
     console.log(err)
     res.json(err)
@@ -54,5 +54,5 @@ export {
   create,
   show,
   update,
-  deleteBucketList as delete
+  deleteListItem as delete
 }
