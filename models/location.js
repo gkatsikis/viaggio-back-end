@@ -9,3 +9,9 @@ const locationSchema = new Schema({
 }, {
   timestamps: true
 })
+
+const Location = mongoose.model('Location', locationSchema)
+
+export {
+  Location
+}
