@@ -3,7 +3,6 @@ import {v2 as cloudinary} from 'cloudinary'
 import { Profile } from '../models/profile.js'
 
 function index (req, res) {
-  console.log('INDEX')
   Post.find({})
   // .populate('')
   .then(posts => {
