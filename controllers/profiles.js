@@ -9,4 +9,19 @@ function index(req, res) {
   })
 }
 
-export { index }
+const show = async (req, res) => {
+  console.log('Show function')
+  try {
+    const profile = await Profile.findById(req.params.id)
+    .populate('posts')
+    return res.status(200).json(profile)
+  } catch (err) {
+    console.log('What is err:', err)
+    return res.status(500).json(err)
+  }
+}
+
+export { 
+  index,
+  show
+}

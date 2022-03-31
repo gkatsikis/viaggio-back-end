@@ -22,10 +22,17 @@ function create(req, res) {
     delete req.body['postPhoto']
     Post.create(req.body)
     .then(post => {
-      post.populate('owner')
-      .then(populatedPost => {
-        res.status(201).json(populatedPost)
+      Profile.findById(req.user.profile)
+      .then(profile => {
+        console.log('HERE:', post._id)
+        profile.posts.push(post._id)
+        profile.save()
+        console.log('THIS:', profile)
+        post.populate('owner')
+        res.status(201).json(post)
       })
+      // .then(populatedPost => {
+      // })
     })
     .catch(err => {
       console.log(err)
