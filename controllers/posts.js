@@ -21,10 +21,17 @@ function create(req, res) {
     delete req.body['postPhoto']
     Post.create(req.body)
     .then(post => {
-      post.populate('owner')
-      .then(populatedPost => {
-        res.status(201).json(populatedPost)
+      Profile.findById(req.user.profile)
+      .then(profile => {
+        console.log('HERE:', post._id)
+        profile.posts.push(post._id)
+        profile.save()
+        console.log('THIS:', profile)
+        post.populate('owner')
+        res.status(201).json(post)
       })
+      // .then(populatedPost => {
+      // })
     })
     .catch(err => {
       console.log(err)
@@ -89,8 +96,9 @@ const deletePost = async (req, res) => {
 }
 
 
-//comments
+
 const createComment = async (req, res) => {
+  console.log('cheese', req.body)
   try {
     req.body.commenter = req.user.profile
     const post = await Post.findById(req.params.id)
@@ -99,6 +107,7 @@ const createComment = async (req, res) => {
     const newComment = post.comments[post.comments.length - 1]
     return res.status(201).json(newComment)
   } catch (err) {
+    console.log('commentupload', err)
     res.status(500).json(err)
   }
 }
