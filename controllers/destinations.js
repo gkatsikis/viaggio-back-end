@@ -1,8 +1,6 @@
 import { Location } from '../models/location.js'
 
 function create (req, res) {
-  // req.body.owner = req.user.profile
-  console.log('DOES IT WOOOOORK????')
   Location.create(req.body)
   .then(location => {
     res.json(location)
@@ -19,7 +17,6 @@ function index (req, res) {
     res.json(locations)
   })
   .catch(err => {
-    console.log('ERROR', err)
     res.json(err)
   })
 }
