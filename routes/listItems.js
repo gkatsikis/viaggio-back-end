@@ -15,7 +15,6 @@ router.get('/:id', checkAuth, listItemsCtrl.show)
 router.put('/:id', checkAuth, listItemsCtrl.update)
 router.delete('/:id', checkAuth, listItemsCtrl.delete)
 
-
 export {
   router
 }

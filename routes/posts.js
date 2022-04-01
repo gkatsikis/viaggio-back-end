@@ -9,17 +9,16 @@ const router = Router()
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.get('/', postsCtrl.index)
+router.get('/', checkAuth, postsCtrl.index)
 router.post('/',  checkAuth, postsCtrl.create)
-router.get('/:id', postsCtrl.show)
-router.put('/:id', postsCtrl.update)
+router.get('/:id', checkAuth, postsCtrl.show)
+router.put('/:id', checkAuth, postsCtrl.update)
 router.delete('/:id', checkAuth, postsCtrl.delete)
 
 //comments
-router.post('/:id/comments', postsCtrl.createComment)
-router.delete('/:postId/comments/:commentId',  postsCtrl.deleteComment)
-router.put('/:postId/comments/:commentId',  postsCtrl.updateComment)
-
+router.post('/:id/comments', checkAuth, postsCtrl.createComment)
+router.delete('/:postId/comments/:commentId', checkAuth, postsCtrl.deleteComment)
+router.put('/:postId/comments/:commentId', checkAuth, postsCtrl.updateComment)
 
 export {
   router

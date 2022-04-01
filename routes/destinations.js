@@ -6,7 +6,7 @@ const router = Router()
 
 router.use(decodeUserFromToken)
 
-router.get('/', destinationsCtrl.index)
+router.get('/', checkAuth, destinationsCtrl.index)
 router.post('/', checkAuth, destinationsCtrl.create)
 
 export {
